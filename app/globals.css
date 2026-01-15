@@ -1,22 +1,32 @@
+@import url("https://rsms.me/inter/inter.css");
 @import "tailwindcss";
 
+/* Custom dark mode variant for Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+/* Default (Day mode) */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+}
+
+/* Dark mode via .dark class (Night mode) */
+.dark {
+  --background: #0f172a;
+  --foreground: #ffffff;
+}
+
+/* Optional: system preference fallback */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #ffffff;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -24,3 +34,269 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* carousel */
+@keyframes marqueeRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-right {
+  animation: marqueeRight 25s linear infinite;
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft 25s linear infinite;
+}
+
+/* masked text */
+.mask-text {
+  font-size: clamp(10rem, 15vw, 14rem);
+  font-weight: 800;
+  line-height: 0.9;
+  color: transparent;
+
+  background-image: url("/BWprofile1.2.png");
+  background-size: 700px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* typography base */
+.ai-text {
+  text-align: center;
+  line-height: 0.9;
+  transition: all 0.4s ease;
+}
+
+/* consistent outline (stroke) */
+.ai-outline-black {
+  -webkit-text-stroke: 3px black;
+  text-stroke: 3px black;
+}
+
+/* base fill colors */
+.ai-base-black {
+  color: black;
+}
+.ai-base-white {
+  color: white;
+}
+
+/* blend to image below */
+.ai-blend {
+  mix-blend-mode: multiply;
+}
+
+/* image fill inside text (mask-like effect) */
+.ai-image-fill {
+  background-image: url("/BWprofile1.2.png");
+  background-size: 700px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* fade bottom for the image */
+.fade-bottom {
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+}
+
+/* X-Ray Text Effect */
+.filled-text {
+  color: #fff;
+  z-index: 0;
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+  font-size: 8rem;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outlined-text {
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  z-index: 2;
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+  font-size: 8rem;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#circle {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: #000;
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  z-index: 30;
+}
+
+.mask-wrapper {
+  position: relative;
+  font-size: clamp(10rem, 15vw, 14rem);
+  font-weight: 800;
+  line-height: 0.9;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mask-image: linear-gradient(black, black);
+  -webkit-mask-image: linear-gradient(black, black);
+}
+
+.mask-wrapper span {
+  position: relative;
+  z-index: 2;
+  color: transparent;
+  -webkit-text-stroke: 2px black;
+
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+/* === TEXT MASK LAYER === */
+
+.mask-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(10rem, 15vw, 14rem);
+  font-weight: 800;
+  line-height: 0.9;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.mask-word {
+  position: relative;
+  font-size: clamp(10rem, 15vw, 14rem);
+  font-weight: 800;
+  line-height: 0.9;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 2px black;
+
+  -webkit-mask-image: linear-gradient(black, black);
+  mask-image: linear-gradient(black, black);
+}
+
+.mask-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 680px;
+
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+}
+
+/* Visible face */
+.hero-image {
+  position: absolute;
+  bottom: 0;
+  width: min(80vw, 680px);
+  z-index: 20;
+  pointer-events: none;
+
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+}
+
+.nav-link {
+  @apply text-black dark:text-white hover:text-blue-400 dark:hover:text-blue-400 transition font-semibold;
+}
+/* Home page carouseels */
+@keyframes scrollRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-scroll-right {
+  animation: scrollRight 30s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 30s linear infinite;
+}
+/* skill section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.skill .icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skill span {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
