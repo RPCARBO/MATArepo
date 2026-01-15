@@ -1,12 +1,17 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  darkMode: 'class', // This is the key setting for class-based dark mode
-  theme: {
-    extend: {},
+// next.config.ts
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // Enable React strict mode for catching potential issues
+  reactStrictMode: true,
+
+  // Generate a static export (outputs to `out/` folder)
+  output: "export",
+
+  // Optional: configure images if you plan to use Next.js <Image />
+  images: {
+    unoptimized: true, // required for static export
   },
-  plugins: [],
-}
+};
+
+export default nextConfig;
