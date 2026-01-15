@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ReactElement } from "react";
 
 const topRow = [
   { name: "C++", icon: "cpp" },
@@ -77,7 +78,7 @@ export default function SkillsSection() {
 function SkillCard({ icon, name, index }: { icon: string; name: string; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   
-  const svgs: Record<string, JSX.Element> = {
+  const svgs: Record<string, ReactElement> = {
     python: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-3 sm:mb-4">
         <linearGradient id="python-original-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
