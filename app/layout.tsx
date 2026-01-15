@@ -1,11 +1,12 @@
 import "./globals.css";
+import { ReactNode } from "react";
 
 export const metadata = {
   title: "Ralph Carbo | AI Engineer",
   description: "AI Portfolio",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head suppressHydrationWarning>
@@ -26,9 +27,8 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
+
