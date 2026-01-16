@@ -1,6 +1,6 @@
 # Personal Portfolio Challenge
 
-I built a responsive portfolio website using **Node.js**, **TypeScript + React**, **Tailwind CSS**, and **Three.js**.  
+I built a [responsive portfolio website](https://mata-repo.vercel.app/) using **Node.js**, **TypeScript + React**, **Tailwind CSS**, and **Three.js**.  
 The site showcases my work and skills with three main sections:
 
 - Home - Introduction and bio section  
