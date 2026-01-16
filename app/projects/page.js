@@ -14,7 +14,7 @@ const inter = Inter({
 const repos = [
   {
     name: "ELENA",
-    url: "https://github.com/keanedalisay/elena",
+    url: "https://github.com/RPCARBO/ELENA",
     image: "/projects/elena.png",
     desc: "AI-powered emergency response chatbot.",
   },
@@ -489,7 +489,7 @@ return (
           <div className="w-full md:w-1/2 max-w-xl text-center md:text-left">
             <div className="inline-block w-full bg-gray-200/60 dark:bg-slate-800/30 backdrop-blur-md rounded-xl p-6">
               <a 
-                href="https://github.com/keanedalisay/auscult_ai" 
+                href="https://github.com/RPCARBO/auscult_ai" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
